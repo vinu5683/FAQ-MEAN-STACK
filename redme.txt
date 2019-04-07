@@ -1,0 +1,23 @@
+1.navigate to project folder
+2.install modules
+	1.npm install
+	2.npm install mongod --save
+	3.npm install mongo --save
+3.start mongoDB server type in cmd > mongod
+4.open another cmd and type
+	1. use FAQ_MEAN
+	2. db.adminlogin.insert({email:"admin@gamil.com",password:"admin"});
+5.run project
+	1.from cmd go to app folder with in project folder (cd app)
+	2.type >node app.js
+	3.for admin login use 
+	4.email as admin@gamil.com
+	5.password as admin
+
+
+name:vinod
+email:vinod568312@gmail.com
+contact no:9738582265
+	
+
+THANK YOU.

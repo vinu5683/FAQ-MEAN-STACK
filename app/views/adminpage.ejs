@@ -1,0 +1,134 @@
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>FAQ's</title>
+    <link rel="stylesheet" href="bootstrap/jquery-ui.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.min.css">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="/js/home.js"></script>
+    <style>
+        h1 { padding: .2em; margin: 0; }
+        #products { float:left; width: 400px; margin-right: 2em; }
+        #cart { width: 230px; float: left; margin-top: 1em; }
+        /* style the list to maximize the droppable hitarea */
+        #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+
+        input[type=text] {
+            background-color: #FFFFFF;
+            border-style: solid;
+            color: orangered;
+            padding: 15px 32px;
+            text-align: left;
+            text-decoration: none;
+            display: inline-block;
+            font-size: large;
+            margin: 5px;
+            width: 70%;
+
+            border: 2px solid gray;
+
+        }
+        input[type=text]:focus {
+            background-color: #fff;
+            border-bottom: 2px solid #5fbae9;
+        }
+        input[type=button], input[type=submit], input[type=reset]  {
+            background-color: #56baed;
+            border: none;
+            color: white;
+            padding: 15px 80px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 13px;
+            -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+            box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+            -webkit-border-radius: 5px 5px 5px 5px;
+            border-radius: 5px 5px 5px 5px;
+            margin: 5px 20px 40px 20px;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+            -o-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+            background-color: #39ace7;
+        }
+
+        input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+            -moz-transform: scale(0.95);
+            -webkit-transform: scale(0.95);
+            -o-transform: scale(0.95);
+            -ms-transform: scale(0.95);
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body ng-app="myApp" ng-controller="MainCtrl" ng-init="displayfaq()" style="background:url(/bootstrap/img/portfoliobg.jpg) center top repeat;">
+<h4 style="color: orangered;padding-left: 10px;">Welcome Admin</h4>
+<hr>
+<input type="hidden" id="faqdata" value="<%=data%>">
+<input type="hidden" id="delval" value="<%=deleted%>">
+<form class="container" action="home" method="post">
+    <h2 align="center"><a><u>Frequently Asked Questions (FAQ)
+            </u> </a>
+        <button type="submit" class="btn btn-primary pull-right" >LOGOUT</button></h2>
+</form>
+
+<hr>
+<div class="container">
+    <h3 align="center"><a><u>ADD NEW FAQ</u></a> </h3>
+    <form action="added" method="post">
+<div class="form-group">
+    <div align="center" class="col-md-8">
+        <input class="form-control" ng-model="question" type="text" name="question" placeholder="Type Question Here?"><br>
+        <textarea class="form-control" ng-model="answer" name="answer" style="border: 2px solid gray;width: 70%;font-size: large; height: 20%;padding: 25px;color:green" type="text" placeholder="Answer Here"></textarea>
+        <br><input type="submit" ng-disabled="!(question && answer)" title="Add FAQ question" class="btn btn-primary" value="ADD THE FAQ">
+    </div>
+</div>
+    </form>
+</div>
+<br>
+<div class="container" ng-repeat="datas in faqs" >
+    <div class="table-bordered">
+        <div id="catalog">
+            <span class="pull-right">Updated on <b>{{datas.date}}</b></span>
+            <h3><a href="#">{{datas.question}}</a></h3>
+            <div>
+            <form action="/deletefaq" method="post" style="padding-left:5px">
+            <button  class="btn btn-danger pull-right">Delete</button>
+                <input type="hidden" name="ques" value="{{datas.question}}">
+                <input type="hidden" name="ans" value="{{datas.answer}}">
+            </form>
+                <form action="/edit" method="post" style="padding-left:5px">
+                    <button class="btn btn-info pull-right">Edit</button>
+                    <input type="hidden" name="ques" value="{{datas.question}}">
+                    <input type="hidden" name="ans" value="{{datas.answer}}">
+                </form>
+            </div>
+            <div style="padding-left: 4px">
+                <h4> &emsp;<u>Ans :</u>&emsp; {{datas.answer}}</h4>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+<div style="padding-bottom: 60px">
+    <br>
+</div>
+<div class="container">
+    <h4><span>Email:<a>vinod568312@gmail.com</a></span></h4>
+    <h4><span>Phone No:<a>9738582265</a></span></h4>
+</div>
+<div style="padding-bottom: 10px">
+    <br>
+</div>
+</body>
+</html>
